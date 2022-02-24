@@ -1,0 +1,11 @@
+body {
+  background: chartreuse;
+  width: 100%;
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  margin: 5% 20%;
+}
+
