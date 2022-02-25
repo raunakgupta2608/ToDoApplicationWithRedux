@@ -5,6 +5,8 @@ import CircularProgressbar from '../components/CircularProgressBar';
 import { MdMoreTime } from "react-icons/md";
 import NameHeader from './NameHeader';
 
+import { useSelector } from 'react-redux';
+
 export const CalenderContext = createContext({
   modalStatus: false,
   setModalStatus: (m) => {
@@ -14,6 +16,8 @@ export const CalenderContext = createContext({
 
 const HomeCard = (props) => {
 
+  const x = useSelector(state => state);
+  // console.log(x);
   const [reminderText, setReminderText] = useState('');
 
   const handleReminderChange = (e) => {
