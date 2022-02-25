@@ -3,3 +3,7 @@
     margin: 0 5% 0 0;
     width: fit-content;
 }
+
+.card-body {
+    flex: none !important;
+}

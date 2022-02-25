@@ -5,7 +5,7 @@ import 'react-circular-progressbar/dist/styles.css';
 function CircularProgressBar() {
 const percentage = "66";
   return (
-    <div style={{ width: 250, height: 250, margin:"12% 20%" }}>
+    <div style={{ width: 'fit-content', height: 'fit-content', margin: '5%' }}>
         <CircularProgressbar
             value={percentage}
             text={`00:00`}

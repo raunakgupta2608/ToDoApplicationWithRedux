@@ -3,8 +3,8 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import '../css/CalenderComponent.css';
 
-function CalenderComponent() {
-  const [date, setDate] = useState(new Date());
+function CalenderComponent(props) {
+  const {date, setDate} = props;
 
   const handleDateChange = (newDate) => {
     setDate(newDate);

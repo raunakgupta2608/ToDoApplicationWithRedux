@@ -1,34 +1,30 @@
-import React, { createContext, useState } from 'react';
 import '../css/HomeCard.css';
-import { Card, Button, CardTitle, Input, CardBody, CardFooter } from 'reactstrap';
-import CircularProgressbar from '../components/CircularProgressBar';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdMoreTime } from "react-icons/md";
 import NameHeader from './NameHeader';
-
-import { useSelector } from 'react-redux';
-
-export const CalenderContext = createContext({
-  modalStatus: false,
-  setModalStatus: (m) => {
-    console.log(m);
-  }
-});
+import CircularProgressbar from '../components/CircularProgressBar';
+import { Card, Button, CardTitle, Input, CardBody, CardFooter } from 'reactstrap';
+import { activitiesCardStatus, setActivityName } from '../redux/activities/activityActions'; 
+import { calenderCardStatus, toggleCalenderCard } from '../redux/calender/calenderActions';
 
 const HomeCard = (props) => {
 
-  const x = useSelector(state => state);
-  // console.log(x);
-  const [reminderText, setReminderText] = useState('');
+  const {activity, calender} = useSelector(state => state);
+  // console.log(activity, calender);
+  const dispatch = useDispatch();
+  const [activityText, setActivityText] = useState('');  
 
-  const handleReminderChange = (e) => {
-    setReminderText(e.target.value);
+  const handleActivityChange = (e) => {
+    setActivityText(e.target.value);
   }
 
-  const addTime = (e) => {
-    if(!reminderText){
+  const addActivity = (e) => {
+    if(!activityText){
       alert("Please enter a reminder to proceed");
     } else {
-      console.log(reminderText)
+      dispatch(setActivityName(activityText));
+      dispatch(toggleCalenderCard());
     }
   }
 
@@ -39,11 +35,11 @@ const HomeCard = (props) => {
           <NameHeader />
         </CardTitle>
         <CardBody style={{ padding: '0' }}>
-          <Input type="text" name="todoname" value={reminderText} id="todoname" placeholder="Enter a Reminder" onChange={handleReminderChange}/>
+          <Input type="text" name="todoname" value={activityText} id="todoname" placeholder="Type a task name" onChange={handleActivityChange}/>
           <CircularProgressbar/>
         </CardBody>
         <CardFooter style={{display: 'flex'}}>
-          <Button style={{flex: '3 0 auto'}} onClick={addTime}>Add Time <MdMoreTime/></Button>
+          <Button style={{flex: '3 0 auto'}} onClick={addActivity}>Add Time <MdMoreTime/></Button>
         </CardFooter>
       </Card>
     </>
