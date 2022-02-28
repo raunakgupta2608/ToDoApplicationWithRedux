@@ -6,4 +6,6 @@
 
 .card-body {
     flex: none !important;
+    width: fit-content;
+    min-width: 20vw;
 }

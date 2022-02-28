@@ -11,9 +11,9 @@ import { calenderCardStatus, toggleCalenderCard } from '../redux/calender/calend
 const HomeCard = (props) => {
 
   const {activity, calender} = useSelector(state => state);
-  // console.log(activity, calender);
   const dispatch = useDispatch();
-  const [activityText, setActivityText] = useState('');  
+  const [activityText, setActivityText] = useState('');
+  
 
   const handleActivityChange = (e) => {
     setActivityText(e.target.value);

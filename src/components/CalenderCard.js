@@ -1,17 +1,17 @@
 import '../css/CalenderCard.css';
-import React, { useState }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import { Card, Button, CardHeader, Input, CardBody, CardFooter } from 'reactstrap';
 import CalenderComponent from './CalenderComponent';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateDateAndTime, toggleCalenderCard } from './../redux/calender/calenderActions';
+import { updateDateAndTime, toggleCalenderCard, calenderCardStatus } from './../redux/calender/calenderActions';
 
 const CalenderCard = (props) => {
 
   const dispatch = useDispatch();
   const [time, setTime] = useState('00:00');
   const [date, setDate] = useState(new Date());
-  const calender = useSelector(state => state.calender);
-
+  const {activity, calender} = useSelector(state => state);
+  
   const handleTimeChange = (e) => {
     setTime(e.target.value);
   }
@@ -26,9 +26,6 @@ const CalenderCard = (props) => {
       time: time
     }
     dispatch(updateDateAndTime(obj));
-    setTimeout(() => {
-      console.log(calender);
-    },5000)
   }
 
   return (
