@@ -1,14 +1,19 @@
 import React from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useSelector, useDispatch } from 'react-redux';
 
 function CircularProgressBar() {
-const percentage = "66";
+    const {activity, calender, selectedActivity} = useSelector(state => state);
+    console.log(selectedActivity[0]);
+    const dispatch = useDispatch();
+    const percentage = "66";
+
   return (
     <div style={{ width: 'fit-content', height: 'fit-content', margin: '5%' }}>
         <CircularProgressbar
             value={percentage}
-            text={`00:00`}
+            text={selectedActivity[0] ? `${selectedActivity[0].calenderTime}` : '00.00'}
             strokeWidth = "1"
             styles={buildStyles({
 

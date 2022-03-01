@@ -5,15 +5,14 @@ import { MdMoreTime } from "react-icons/md";
 import NameHeader from './NameHeader';
 import CircularProgressbar from '../components/CircularProgressBar';
 import { Card, Button, CardTitle, Input, CardBody, CardFooter } from 'reactstrap';
-import { activitiesCardStatus, setActivityName } from '../redux/activities/activityActions'; 
+import { activitiesCardStatus, setActivitiesCardStatus, setActivityName } from '../redux/activities/activityActions'; 
 import { calenderCardStatus, toggleCalenderCard } from '../redux/calender/calenderActions';
 
 const HomeCard = (props) => {
 
-  const {activity, calender} = useSelector(state => state);
+  const {activity, calender, selectedActivity} = useSelector(state => state);
   const dispatch = useDispatch();
   const [activityText, setActivityText] = useState('');
-  
 
   const handleActivityChange = (e) => {
     setActivityText(e.target.value);
@@ -23,6 +22,7 @@ const HomeCard = (props) => {
     if(!activityText){
       alert("Please enter a reminder to proceed");
     } else {
+      dispatch(setActivitiesCardStatus(false))
       dispatch(setActivityName(activityText));
       dispatch(toggleCalenderCard());
     }

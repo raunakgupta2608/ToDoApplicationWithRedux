@@ -4,13 +4,18 @@ import { Card, Button, CardHeader, Input, CardBody, CardFooter } from 'reactstra
 import CalenderComponent from './CalenderComponent';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateDateAndTime, toggleCalenderCard } from './../redux/calender/calenderActions';
+import store from '../redux/store'
 
 const CalenderCard = () => {
 
   const dispatch = useDispatch();
   const [time, setTime] = useState('00:00');
   const [date, setDate] = useState(new Date());
-  const {activity, calender} = useSelector(state => state);
+  const {activity} = useSelector(state => state);
+
+  // store.subscribe(() => {
+  //   console.log(store.getState());
+  // })
   
   const handleTimeChange = (e) => {
     setTime(e.target.value);
@@ -21,6 +26,7 @@ const CalenderCard = () => {
   }
 
   const handleDateAndTime = () => {
+    // console.log(activity);
     const obj = {
       date: date.toJSON().slice(0,10).split('-').reverse().join('/'),
       time: time,

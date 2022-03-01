@@ -1,11 +1,5 @@
 import { IS_CALENDER_CARD_ACTIVE, TOGGLE_CALENDER_CARD, UPDATE_DATE_AND_TIME } from "./calenderTypes";
 
-// const initialState = {
-//     isCalenderActive: false,
-//     calenderDate: '',
-//     calenderTime: '00:00'
-// }
-
 const initialState = {
     isCalenderActive: false,
     calender: [],
