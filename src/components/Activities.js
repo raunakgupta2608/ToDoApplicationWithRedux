@@ -8,11 +8,11 @@ const Activities = () => {
     const {activity, calender} = useSelector(state => state);
     const dispatch = useDispatch();
 
-    console.log(activity, calender);
+    // console.log(calender);
 
-    useEffect(() => {
-        console.log(calender);
-    }, [calender]);
+    // useEffect(() => {
+    //     console.log(calender);
+    // }, [calender]);
 
     return (
       <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
@@ -21,20 +21,18 @@ const Activities = () => {
         </CardTitle>
         <CardBody className='activitiesCardBody'>
             <ListGroup flush>
-                {/* <ListGroupItem>
-                    <ListGroupItemHeading style={{display: 'flex', alignItems: 'center'}}>
-                        <span>Today's Activity</span>
-                        <span><hr/></span>
-                    </ListGroupItemHeading>
-                    <ListGroupItem tag="a" href="#">Dapibus ac facilisis in</ListGroupItem>
-                    <ListGroupItem tag="a" href="#">Morbi leo risus</ListGroupItem>
-                </ListGroupItem> */}
                 <ListGroupItem>
                     <ListGroupItemHeading style={{display: 'flex', alignItems: 'center'}}>
                         <span>Tasks</span>
                         <span><hr/></span>
                     </ListGroupItemHeading>
-                    <ListGroupItem tag="a" href="#">{ activity.activityName }</ListGroupItem>
+                    {
+                        calender.calender.map(ele => {
+                            return (<ListGroupItem tag="a" href="#">
+                                { ele.activityName }
+                            </ListGroupItem>)
+                        })
+                    }
                 </ListGroupItem>
             </ListGroup>
         </CardBody>

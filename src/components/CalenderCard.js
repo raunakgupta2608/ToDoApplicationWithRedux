@@ -1,11 +1,11 @@
 import '../css/CalenderCard.css';
-import React, { useEffect, useState }  from 'react';
+import React, { useState }  from 'react';
 import { Card, Button, CardHeader, Input, CardBody, CardFooter } from 'reactstrap';
 import CalenderComponent from './CalenderComponent';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateDateAndTime, toggleCalenderCard, calenderCardStatus } from './../redux/calender/calenderActions';
+import { updateDateAndTime, toggleCalenderCard } from './../redux/calender/calenderActions';
 
-const CalenderCard = (props) => {
+const CalenderCard = () => {
 
   const dispatch = useDispatch();
   const [time, setTime] = useState('00:00');
@@ -23,7 +23,8 @@ const CalenderCard = (props) => {
   const handleDateAndTime = () => {
     const obj = {
       date: date.toJSON().slice(0,10).split('-').reverse().join('/'),
-      time: time
+      time: time,
+      activityName: activity.activityName
     }
     dispatch(updateDateAndTime(obj));
   }
