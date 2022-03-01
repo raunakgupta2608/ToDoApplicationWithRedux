@@ -2,8 +2,7 @@ import { IS_CALENDER_CARD_ACTIVE, TOGGLE_CALENDER_CARD, UPDATE_DATE_AND_TIME } f
 
 const initialState = {
     isCalenderActive: false,
-    calender: [],
-    activityName: ''
+    calender: []
 }
 
 const calenderReducer = (state= initialState, action) => {

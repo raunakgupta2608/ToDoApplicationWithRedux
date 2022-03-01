@@ -25,17 +25,37 @@ const Activities = () => {
             <ListGroup flush>
                 <ListGroupItem>
                     <ListGroupItemHeading style={{display: 'flex', alignItems: 'center'}}>
+                        <span>Today's Activity</span>
+                        <span><hr/></span>
+                    </ListGroupItemHeading>
+                    {
+                        calender.calender.map((ele, index) => {
+                            if(ele.calenderDate == new Date().toJSON().slice(0,10).split('-').reverse().join('/')) {
+                                return (
+                                <ListGroupItem tag="a" href="#" key={index} onClick={setSelectedActivity}
+                                    name={ele.activityName}>
+                                { ele.activityName }
+                                </ListGroupItem>
+                                )
+                            }
+                        })
+                    }
+                </ListGroupItem>
+                <ListGroupItem>
+                    <ListGroupItemHeading style={{display: 'flex', alignItems: 'center'}}>
                         <span>Tasks</span>
                         <span><hr/></span>
                     </ListGroupItemHeading>
                     {
                         calender.calender.map((ele, index) => {
-                            return (
+                            if(ele.calenderDate !== new Date().toJSON().slice(0,10).split('-').reverse().join('/')) {
+                                return (
                                 <ListGroupItem tag="a" href="#" key={index} onClick={setSelectedActivity}
                                     name={ele.activityName}>
                                 { ele.activityName }
                                 </ListGroupItem>
-                            )
+                                )
+                            }
                         })
                     }
                 </ListGroupItem>

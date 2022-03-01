@@ -26,7 +26,6 @@ const CalenderCard = () => {
   }
 
   const handleDateAndTime = () => {
-    // console.log(activity);
     const obj = {
       date: date.toJSON().slice(0,10).split('-').reverse().join('/'),
       time: time,

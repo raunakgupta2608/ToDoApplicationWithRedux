@@ -13,6 +13,7 @@ const HomeCard = (props) => {
   const {activity, calender, selectedActivity} = useSelector(state => state);
   const dispatch = useDispatch();
   const [activityText, setActivityText] = useState('');
+  console.log(calender.calender)
 
   const handleActivityChange = (e) => {
     setActivityText(e.target.value);

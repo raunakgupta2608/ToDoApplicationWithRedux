@@ -5,14 +5,29 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function CircularProgressBar() {
     const {activity, calender, selectedActivity} = useSelector(state => state);
-    console.log(selectedActivity[0]);
     const dispatch = useDispatch();
-    const percentage = "66";
+    const percentage = "0";
+
+    const checkTodaysActivity = () => {
+        const todaysDate = new Date().toJSON().slice(0,10).split('-').reverse().join('/');
+        if(todaysDate === selectedActivity[0]?.calenderDate) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    const computePrecentage = () => {
+        const timeOfActivity = selectedActivity[0].calenderTime.split(':')[0];
+        const p = (100*timeOfActivity)/24;
+        return p;
+    }
 
   return (
     <div style={{ width: 'fit-content', height: 'fit-content', margin: '5%' }}>
         <CircularProgressbar
-            value={percentage}
+            value={checkTodaysActivity() ? computePrecentage() : percentage}
             text={selectedActivity[0] ? `${selectedActivity[0].calenderTime}` : '00.00'}
             strokeWidth = "1"
             styles={buildStyles({
